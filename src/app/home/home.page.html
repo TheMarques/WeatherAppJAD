@@ -9,14 +9,21 @@
 <ion-content [fullscreen]="true">
     <ion-header collapse="condense">
         <ion-toolbar>
-            <ion-title size="large">Blank</ion-title>
+            <ion-title size="large">JADther App</ion-title>
         </ion-toolbar>
     </ion-header>
 
-    <h1>este é o link</h1>
-    <ion-button (click)="showLink()">Link</ion-button>
+
+
     <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <h1>
+            Não estás sozinho, JADther for you!
+        </h1>
+        <ion-item>
+            <ion-button (click)="showLink()">Link debug</ion-button>
+            <ion-button (click)="getCurrentDay()">Check Current Weather</ion-button>
+            <ion-button (click)="getAstronomy()">Check Astronomy</ion-button>
+            <ion-button (click)="getForcast()">Check Forecast</ion-button>
+        </ion-item>
     </div>
 </ion-content>

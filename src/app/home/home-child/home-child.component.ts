@@ -20,7 +20,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
   }
 
   showLink(){
-    console.log(this.apiService.getApiUrl("current.json?q=".concat("Lisbon")));
+    console.log(this.apiService.getApiUrl("current.json?q=".concat(this.local)));
   }
 
   getCurrentDay():void{

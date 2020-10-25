@@ -9,6 +9,8 @@ import { ApiService } from 'src/app/shared/services/api-service.service';
 })
 export class HomeChildComponent implements OnInit, OnDestroy {
 
+  arrayDumby = [0,1,2,3,4,5];
+
   @Input() local: string;
 
   private subArray: Subscription[] = [];

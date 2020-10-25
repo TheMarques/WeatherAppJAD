@@ -27,10 +27,14 @@ header{
             display: inline-block;
             width: 15%;
             text-align: right;
+            font-size: 1.4em;
         }
         li:first-child{
             width: 70%;
             text-align: left;
+        }
+        li:last-child{
+            color: rgb(204, 204, 204);
         }
     }
 }
@@ -41,3 +45,56 @@ header{
     border-bottom: 3px solid grey;
     background-color: #aeaeae4d;
 }
+
+.forecast-dias{
+    width: 100%;
+    border-bottom: 3px solid grey;
+
+    .forecast-dias-item{
+        background-color: #7e7e7e3a;
+        padding: 1vh 10%;
+
+        ul{
+            list-style: none;
+            li{
+                width: 15%;
+                position: relative;
+                display: inline-block;
+                position: relative;
+                font-size: 0.9em;
+                height: 30px;
+                img{
+                    height: 100%;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 0;
+                }
+                span{
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            li:first-child{
+                width: 50%;
+            }
+            li:nth-child(2){
+                width: 20%;
+            }
+            li:nth-child(3) span,
+            li:nth-child(4) span{
+                right: 0;
+            }
+            li:nth-child(4) span{
+                color: rgb(204, 204, 204);
+            }
+
+        }
+    }
+
+    .forecast-dias-item:nth-child(even){
+        background-color: #aeaeae4d;
+    }
+}
+

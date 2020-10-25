@@ -10,6 +10,7 @@ export class CidadesComponent implements OnInit {
   
   adcCidadeDisplay: string = '';
   inputCidade: string = '';
+  disableTrash: string = '';
 
   @Input() cidadesDisplay: string;
   @Input() cidades: string[];
@@ -17,7 +18,9 @@ export class CidadesComponent implements OnInit {
   @Output() cidadesChange = new EventEmitter<string[]>();
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.verificaNumeroCidades();
+  }
 
 
   cidadesDisplauChange(){
@@ -34,17 +37,23 @@ export class CidadesComponent implements OnInit {
       this.cidades.splice(index, 1);
     }
     this.cidadesArrayEventF();
+    this.verificaNumeroCidades();
   }
 
   adicionarCidade(){
     this.cidades.push(this.inputCidade);
     this.cidadesArrayEventF();
     this.toggleAdcCidade();
+    this.verificaNumeroCidades();
     this.inputCidade = '';
   }
 
   toggleAdcCidade(){
     this.adcCidadeDisplay.length == 0 ? this.adcCidadeDisplay = 'ativo' : this.adcCidadeDisplay = '';
+  }
+
+  verificaNumeroCidades(){
+    this.cidades.length == 1 ? this.disableTrash = 'desativo' : this.disableTrash = '';
   }
 
 }

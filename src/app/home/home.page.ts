@@ -10,7 +10,7 @@ import { ApiService } from '../shared/services/api-service.service';
 export class HomePage{
 
   cidadesComponent: string = '';
-  cidades: string[] = ['Lisboa, Portugal'];
+  cidades: string[] = ['Lisboa, Portugal', 'Porto, Portugal'];
 
   slideOpts = {
     initialSlide: 0,

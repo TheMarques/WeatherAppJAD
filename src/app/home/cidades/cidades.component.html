@@ -3,8 +3,8 @@
   <div class="cidade">
     <ul *ngFor="let cidade of cidades">
       <li>{{ cidade }}</li>
-      <li (click)="apagarCidade(cidade)">
-        <img src="assets/icon/trash.svg" />
+      <li>
+        <img (click)="apagarCidade(cidade)" [ngClass]="disableTrash" src="assets/icon/trash.svg"/>
       </li>
     </ul>
   </div>

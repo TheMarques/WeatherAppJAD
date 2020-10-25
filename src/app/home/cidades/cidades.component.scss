@@ -1,3 +1,7 @@
+.desativo{
+    display: none;
+}
+
 .cidades-container{
     position: fixed;
     z-index: 100;
@@ -36,6 +40,7 @@
             li{
                 display: inline-block;
                 width: 50%;
+
             }
             li:last-child{
                 text-align: right;
@@ -122,6 +127,7 @@
                 transform: translate(-50%,-50%);
             }
         }
+
     }
 
 }

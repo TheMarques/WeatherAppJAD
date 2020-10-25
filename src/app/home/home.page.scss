@@ -6,9 +6,13 @@ ion-slide{
 }
 
 ion-slide:first-child{
-  background-color: aqua;
+  background-color: grey;
 }
 
+
+ion-slide{
+  background-color: black;
+}
 
 nav{
   position: fixed;

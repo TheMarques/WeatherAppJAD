@@ -18,4 +18,11 @@ nav{
   height: 30px;
   z-index: 9;
   bottom: 0;
+
+  img{
+    position: absolute;
+    right: 1vh;
+    top: 10%;
+    height: 70%;
+  }
 }

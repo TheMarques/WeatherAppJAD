@@ -8,6 +8,8 @@ import { ApiService } from '../shared/services/api-service.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage{
-  
-
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
 }

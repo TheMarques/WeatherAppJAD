@@ -1,22 +1,18 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>
-            Blank
-        </ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-        <ion-toolbar>
-            <ion-title size="large">JADther App</ion-title>
-        </ion-toolbar>
-    </ion-header>
 
-
-
-    <div id="container">
-        <app-home-child [local]="'Lisboa'"></app-home-child>
-        <app-home-child [local]="'Porto, Portugal'"></app-home-child>
-    </div>
+    <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide>
+            <app-home-child [local]="'Lisboa'"></app-home-child>
+          </ion-slide>
+          <ion-slide>
+            <app-home-child [local]="'Porto, Portugal'"></app-home-child>
+          </ion-slide>
+          <ion-slide>
+            <app-home-child [local]="'Faro, Portugal'"></app-home-child>
+          </ion-slide>
+    </ion-slides>
+        
+    <nav>
+        <!--bars-->
+    </nav>
 </ion-content>

@@ -10,6 +10,13 @@ import { ApiService } from 'src/app/shared/services/api-service.service';
 export class HomeChildComponent implements OnInit, OnDestroy {
 
   arrayDumby = [0,1,2,3,4,5];
+  arrayDumby2 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+
+  sliderConfig = {
+    spaceBetween:10,
+    centeredSlides: false,
+    slidesPerView: 6 
+  }
 
   @Input() local: string;
 

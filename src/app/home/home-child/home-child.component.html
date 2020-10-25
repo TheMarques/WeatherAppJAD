@@ -12,8 +12,17 @@
     </ul>
   </div>
   <div class="forecast-horas">
-    <!--SLIDER-->
+    <ion-slides [options]="sliderConfig">
+      <ion-slide *ngFor="let item of this.arrayDumby2">
+        <ul>
+          <li><span>{{item}}</span></li>
+          <li><img src="//cdn.weatherapi.com/weather/64x64/day/113.png"></li>
+          <li><span>18º</span></li>
+        </ul>
+      </ion-slide>
+    </ion-slides>
   </div>
+
   <div class="forecast-dias">
     <div class="forecast-dias-item" *ngFor="let item of this.arrayDumby">
      <ul>
@@ -23,7 +32,6 @@
        <li><span>12</span></li>
      </ul>
     </div>
-
   </div>
   <div class="nivel-conforto"></div>
   <div class="vento"></div>

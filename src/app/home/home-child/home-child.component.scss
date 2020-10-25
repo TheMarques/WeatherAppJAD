@@ -44,6 +44,31 @@ header{
     border-top: 3px solid grey;
     border-bottom: 3px solid grey;
     background-color: #aeaeae4d;
+
+    ion-slides{
+        min-height: 10vh;
+        padding: 1vh 0;
+    }
+
+    ion-slide{
+        ul{
+            text-decoration: none;
+
+            li{
+                text-align: center;
+                img{
+                    transform: scale(0.8);
+                }
+            }
+            li:first-child{
+                span{
+                    font-size: 0.7em;
+                }
+            }
+        }
+
+    }
+
 }
 
 .forecast-dias{

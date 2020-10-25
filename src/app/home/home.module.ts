@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomeChildComponent } from './home-child/home-child.component';
+import { CidadesComponent } from './cidades/cidades.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HomeChildComponent } from './home-child/home-child.component';
   ],
   declarations: [
     HomePage,
-    HomeChildComponent
+    HomeChildComponent,
+    CidadesComponent
   ]
 })
 export class HomePageModule {}

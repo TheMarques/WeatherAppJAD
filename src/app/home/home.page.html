@@ -1,18 +1,21 @@
 <ion-content [fullscreen]="true">
+  <app-cidades
+    [cidadesDisplay]="cidadesComponent"
+    (cidadesDisplayChange)="toggleCidadesComponentEvent($event)"
+    [cidades]="cidades"
+    (cidadesChange)="updateCidade($event)"
+  ></app-cidades>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let cidade of cidades">
+      <app-home-child [local]="cidade"></app-home-child>
+    </ion-slide>
+  </ion-slides>
 
-    <ion-slides pager="true" [options]="slideOpts">
-        <ion-slide>
-            <app-home-child [local]="'Lisboa'"></app-home-child>
-          </ion-slide>
-          <ion-slide>
-            <app-home-child [local]="'Porto, Portugal'"></app-home-child>
-          </ion-slide>
-          <ion-slide>
-            <app-home-child [local]="'Faro, Portugal'"></app-home-child>
-          </ion-slide>
-    </ion-slides>
-        
-    <nav>
-        <img src="/assets/icon/bars.svg" alt="bars">
-    </nav>
+  <nav>
+    <img
+      src="/assets/icon/bars.svg"
+      alt="bars"
+      (click)="toggleCidadesComponent()"
+    />
+  </nav>
 </ion-content>

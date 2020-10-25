@@ -1,15 +1,12 @@
 *{
     padding: 0;
     margin: 0;
+    display: block;
 }
 header{
-    position: absolute;
     width: 100%;
-    min-height: 30vh;
-    padding: 6vh 0;
-    top: 0;
-    left: 0;
-    background-color: azure;
+    padding: 3vh 0 1.5vh 0;
+    background-color: rgb(216, 13, 13);
 
     h1{
       font-size: 6em; 
@@ -17,4 +14,31 @@ header{
     h3{
         font-size: 2em; 
     }    
+}
+
+.hoje{
+    width: 100%;
+    height: 5vh;
+    background-color: blueviolet;
+    padding: 1.5vh 10%;
+   
+    ul{
+        list-style: none;
+        li{
+            display: inline-block;
+            width: 15%;
+            text-align: right;
+        }
+        li:first-child{
+            width: 70%;
+            text-align: left;
+        }
+    }
+}
+
+.forecast-horas{
+    min-height: 10vh;
+    border-top: 3px solid grey;
+    border-bottom: 3px solid grey;
+    background-color: #aeaeae4d;
 }

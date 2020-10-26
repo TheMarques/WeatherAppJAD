@@ -21,6 +21,8 @@ export interface Current {
     guest_kph:number
 }
 
+
+//Current, chama condition, day e hour
 /*
 "current": {
     "last_updated_epoch": 1603475111,

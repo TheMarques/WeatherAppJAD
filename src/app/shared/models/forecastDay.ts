@@ -1,11 +1,10 @@
-import {Condition} from './condition'
 import {Day} from './day'
-import {Hour} from './hour'
 
 
 export interface ForecastDay {
     date: string,
     date_epoch: number,
+    day:Day,
     uv: number
 }
 

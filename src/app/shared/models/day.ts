@@ -1,4 +1,4 @@
-import { Hour} from './hour'
+import { Condition } from './condition';
 
 export interface Day{
     maxtemp_c: number,
@@ -18,28 +18,36 @@ export interface Day{
     daily_chance_of_rain: string,
     daily_will_it_snow: number,
     daily_chance_of_snow: string
+    condition: Condition,
+    uv:number
 }
 
 
 /**
  *                 "day": {
-                    "maxtemp_c": 15.6,
-                    "maxtemp_f": 60.1,
-                    "mintemp_c": 12.0,
-                    "mintemp_f": 53.6,
-                    "avgtemp_c": 13.5,
-                    "avgtemp_f": 56.3,
-                    "maxwind_mph": 12.5,
-                    "maxwind_kph": 20.2,
-                    "totalprecip_mm": 0.1,
-                    "totalprecip_in": 0.0,
-                    "avgvis_km": 10.0,
-                    "avgvis_miles": 6.0,
-                    "avghumidity": 76.0,
-                    "daily_will_it_rain": 0,
-                    "daily_chance_of_rain": "0",
+                    "maxtemp_c": 13.6,
+                    "maxtemp_f": 56.5,
+                    "mintemp_c": 9.2,
+                    "mintemp_f": 48.6,
+                    "avgtemp_c": 10.8,
+                    "avgtemp_f": 51.4,
+                    "maxwind_mph": 15.4,
+                    "maxwind_kph": 24.8,
+                    "totalprecip_mm": 4.0,
+                    "totalprecip_in": 0.16,
+                    "avgvis_km": 9.6,
+                    "avgvis_miles": 5.0,
+                    "avghumidity": 78.0,
+                    "daily_will_it_rain": 1,
+                    "daily_chance_of_rain": "98",
                     "daily_will_it_snow": 0,
                     "daily_chance_of_snow": "0",
+                    "condition": {
+                        "text": "Patchy rain possible",
+                        "icon": "//cdn.weatherapi.com/weather/64x64/day/176.png",
+                        "code": 1063
+                    },
+                    "uv": 1.0
                 },
  * 
  */

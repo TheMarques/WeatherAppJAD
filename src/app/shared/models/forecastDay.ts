@@ -1,15 +1,18 @@
-import {Day} from './day'
-
+import { Condition } from "./condition";
+import { Day } from "./day";
 
 export interface ForecastDay {
-    date: string,
-    date_epoch: number,
-    day:Day,
-    uv: number
+  date: string;
+  date_epoch: number;
+  day: Day;
+  condition: Condition;
+  uv: number;
 }
 
-
-
+/**
+ *
+ * ForeCastDay precisa de um array de Dias, e cada dia tem um array [24] de horas
+ */
 /**
  * 
  *         "forecastday": [

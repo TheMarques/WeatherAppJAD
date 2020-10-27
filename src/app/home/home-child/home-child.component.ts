@@ -39,7 +39,6 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: "doughnut",
       data: {
-        labels: ["% Humidade", ""],
         datasets: [
           {
             label: "# of Votes",

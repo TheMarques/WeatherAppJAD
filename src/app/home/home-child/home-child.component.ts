@@ -1,16 +1,19 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {  AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api-service.service';
+import { Chart } from "chart.js";
 
 @Component({
   selector: 'app-home-child',
   templateUrl: './home-child.component.html',
   styleUrls: ['./home-child.component.scss'],
 })
-export class HomeChildComponent implements OnInit, OnDestroy {
+export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
 
   arrayDumby = [0,1,2,3,4,5];
   arrayDumby2 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+
+  @ViewChild("doughnutCanvas") doughnutCanvas: ElementRef;
 
   sliderConfig = {
     spaceBetween:10,
@@ -21,11 +24,35 @@ export class HomeChildComponent implements OnInit, OnDestroy {
   @Input() local: string;
 
   private subArray: Subscription[] = [];
+  doughnutChart: Chart;
   
   constructor(protected apiService: ApiService) {}
+
+  ngAfterViewInit(): void {
+    this.iniciarChart();
+  }
   
   ngOnInit(): void {
-    
+  }
+
+  iniciarChart(){
+    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+      type: "doughnut",
+      data: {
+        labels: ["% Humidade", ""],
+        datasets: [
+          {
+            label: "# of Votes",
+            data: [20, 80],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+            ],
+            hoverBackgroundColor: ["#FF6384", "#36A2EB"]
+          }
+        ]
+      }
+    });
   }
 
   showLink(){

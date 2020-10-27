@@ -178,6 +178,14 @@ header {
   }
 }
 
+.astro-table-cell{
+  text-align: center;
+  img{
+    width: 35%;
+    margin: auto;
+  }
+}
+
 main::after{
     content: '';
     display: block;

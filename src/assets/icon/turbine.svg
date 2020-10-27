@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+	<g>
+		<g>
+			<rect  style="fill:#fff;" x="14.3" y="16" class="st0" width="3.4" height="15.1"/>
+			<circle style="fill:#fff;" cx="16" cy="13" r="2" />
+			<path class="st1" style="fill:#fff;" d="M17.88,10.661C17.585,7.532,16.792,0,16,0s-1.585,7.532-1.88,10.661C14.635,10.248,15.288,10,16,10
+			S17.365,10.248,17.88,10.661z" />
+			<path class="st2" style="fill:#fff;" d="M17.88,10.661C17.585,7.532,16.792,0,16,0s-1.585,7.532-1.88,10.661C14.635,10.248,15.288,10,16,10
+			S17.365,10.248,17.88,10.661z" />
+			<path class="st3" style="fill:#fff;" d="M17.88,10.661C17.585,7.532,16.792,0,16,0s-1.585,7.532-1.88,10.661C14.635,10.248,15.288,10,16,10
+			S17.365,10.248,17.88,10.661z" />
+		</g>
+	</g>
+	<style>
+		.st1{
+			transform: rotate(0deg);
+			transform-origin: 50% 41%;
+			animation: rotate 3s linear infinite;
+
+		}
+
+		@keyframes rotate{
+			to{
+				transform: rotate(360deg);
+				transform-origin: 50% 41%;
+
+			}
+		}
+
+		.st2{
+			transform: rotate(120deg);
+			transform-origin: 50% 41%;
+			animation: rotate1 3s linear infinite;
+
+		}
+
+		@keyframes rotate1{
+			to{
+				transform: rotate(480deg);
+				transform-origin: 50% 41%;
+
+			}
+		}
+
+		.st3{
+			transform: rotate(240deg);
+			transform-origin: 50% 41%;
+			animation: rotate2 3s linear infinite;
+
+		}
+
+		@keyframes rotate2{
+			to{
+				transform: rotate(600deg);
+				transform-origin: 50% 41%;
+
+			}
+		}
+	</style>
+</svg>

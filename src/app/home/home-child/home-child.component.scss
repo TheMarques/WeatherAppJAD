@@ -143,6 +143,10 @@ header {
 .table-cell {
   width: 50%;
   display: table-cell;
+  .turbine{
+    width: 80%;
+    margin: auto;
+  }
 }
 
 .table-cell:last-child {

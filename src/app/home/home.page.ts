@@ -18,25 +18,39 @@ export class HomePage implements OnInit {
 
   constructor(protected apiService: ApiService) { }
 
+  /**
+   *  Verificar localstorage por cidades
+   *  Se sim atribuir a variavel cidades
+   *  Se não atribui Lisboa como defeito
+   */
   ngOnInit() {
-    //Verificar localstorage por cidades
-    //Se sim atribuir a variavel cidades
     if (localStorage.getItem("cidades")) {
       this.cidades = JSON.parse(localStorage.getItem("cidades"));
     }
-
-    //Se não atribui Lisboa como defeito
     if (this.cidades.length == 0) {
       this.cidades = ['Lisboa, Portugal'];
     }
   }
 
+  /**
+   * 
+   */
   toggleCidadesComponent() {
     this.cidadesComponent.length == 0 ? this.cidadesComponent = 'ativo' : this.cidadesComponent = '';
   }
+
+  /**
+   * 
+   * @param vazio 
+   */
   toggleCidadesComponentEvent(vazio: string) {
     this.cidadesComponent = vazio;
   }
+
+  /**
+   * Atualiza o campo cidades com informação que vem do parâmetro de entrada
+   * @param cidades 
+   */
   updateCidade(cidades: string[]) {
     this.cidades = cidades;
     //Guarda cidades em localstorage

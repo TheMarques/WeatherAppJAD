@@ -37,19 +37,16 @@ export class HomeChildComponent implements OnInit, OnDestroy {
 
   constructor(protected apiService: ApiService) { }
 
+  /**
+   * Faz a chamada a API quando inicia
+   */
   ngOnInit(): void {
-    this.apiService.getForecast(this.local).subscribe(
-      result => {
-        this.forecast = result.forecast;
-        this.location = result.location;
-        this.current = result.current;
-        this.day = result.forecast.forecastday[0].day;
-        this.astro = result.forecast.forecastday[0].astro;
-        this.iniciarChart();
-      }
-    );
+    this.getForecast();
   }
 
+  /**
+   * Inicializa o gráfico de humidade
+   */
   iniciarChart() {
     let nivelHumidade = this.current.humidity;
     let util = 100 - nivelHumidade;
@@ -71,39 +68,76 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     });
   }
   
+  /**
+   * Faz a chamada a API e atribui o valor a todos os campos
+   */
   getForecast(): void {
     this.apiService.getForecast(this.local).subscribe(
       result => {
-        console.log(result);
+        this.forecast = result.forecast;
+        this.location = result.location;
+        this.current = result.current;
+        this.day = result.forecast.forecastday[0].day;
+        this.astro = result.forecast.forecastday[0].astro;
+        this.iniciarChart();
       }
     );
   }
 
+  /**
+   * Apaga todas as subscrições efetuadas durante o runtime
+   */
   ngOnDestroy(): void {
     this.subArray.forEach(sub => sub && !sub.closed && sub.unsubscribe);
   }
 
+  /**
+   * Retorna o valor de entrada aredondado para baixo
+   * @param num 
+   */
   MathHtml(num: number) {
     if (num === null) return 0;
     return Math.floor(num);
   }
 
+  /**
+   * Devolve o dia da semana com base na string
+   * Serve para converter o campo que vem da api "(Date)""
+   * @param data 
+   */
   devolveDiaSemana(data: string): string {
     if (data === null) return "";
     let date = new Date(data);
     return Weekday[date.getDay()];
   }
+
+  /**
+   * Devolve as Horas a partir de uma string
+   * Serve para converter o campo que vem da api "(Date)""
+   * para obter apenas as horas
+   * @param data 
+   */
   devolveHoras(data: string): number {
     if (data === null) return 0;
     let date = new Date(data);
     return date.getHours();
   }
 
+  /**
+   * Retorna uma string com a direção do vento por extenso
+   * com base no parâmetro de entrada
+   * @param data 
+   */
   devolverDirecaoVento(data: string): string {
     if (data === null) return "";
     return WindDirections[data];
   }
 
+  /**
+   * Retorna uma string com a hora convertida
+   * de formato 12 AM/PM para formato 24 Horas
+   * @param data 
+   */
   devolverHorasFormatoEuropeu(data: string): string {
     if (data === null) return "";
     const [time, modifier] = data.split(' ');

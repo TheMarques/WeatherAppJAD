@@ -1,32 +1,32 @@
 <header>
-    <h3>{{ this.location.name }}</h3>
-    <p>{{this.day.condition.text}}</p>
-    <h1>{{MathHtml(this.day.avgtemp_c)}}º</h1>
+    <h3>{{ this.location?.name }}</h3>
+    <p>{{this.day?.condition.text}}</p>
+    <h1>{{MathHtml(this.day?.avgtemp_c)}}º</h1>
 </header>
 <main>
     <div class="hoje">
         <ul>
             <li>Hoje</li>
-            <li>{{MathHtml(this.day.maxtemp_c)}}</li>
-            <li>{{MathHtml(this.day.mintemp_c)}}</li>
+            <li>{{MathHtml(this.day?.maxtemp_c)}}</li>
+            <li>{{MathHtml(this.day?.mintemp_c)}}</li>
         </ul>
     </div>
     <div class="forecast-horas">
         <ion-slides [options]="sliderConfig">
-            <ion-slide *ngFor="let hourDay of this.forecast.forecastday[0].hour">
+            <ion-slide *ngFor="let hourDay of this.forecast?.forecastday[0].hour">
                 <ul>
                     <li>
-                        <span>{{ devolveHoras(hourDay.time) }}</span>
+                        <span>{{ devolveHoras(hourDay?.time) }}</span>
                     </li>
-                    <li><img src="{{hourDay.condition.icon}}" /></li>
-                    <li><span>{{MathHtml(hourDay.temp_c)}}º</span></li>
+                    <li><img src="{{hourDay?.condition.icon}}" /></li>
+                    <li><span>{{MathHtml(hourDay?.temp_c)}}º</span></li>
                 </ul>
             </ion-slide>
         </ion-slides>
     </div>
 
     <div class="forecast-dias">
-        <div class="forecast-dias-item" *ngFor="let forescatdayitem of this.forecast.forecastday">
+        <div class="forecast-dias-item" *ngFor="let forescatdayitem of this.forecast?.forecastday">
             <ul>
                 <li><span>{{devolveDiaSemana(forescatdayitem.date)}}</span></li>
                 <li><img src="{{forescatdayitem.day.condition.icon}}" /></li>
@@ -41,11 +41,11 @@
             <div class="table-cell">
                 <h3>Humidade</h3>
                 <canvas #doughnutCanvas></canvas>
-                <h5>{{current.humidity}}%</h5>
+                <h5>{{current?.humidity}}%</h5>
             </div>
             <div class="table-cell">
                 <div class="vento-container">
-                    <p><span>Sensação</span><span>{{MathHtml(current.feelslike_c)}}ºC</span></p>
+                    <p><span>Sensação</span><span>{{MathHtml(current?.feelslike_c)}}ºC</span></p>
                 </div>
             </div>
         </div>
@@ -58,8 +58,8 @@
             </div>
             <div class="table-cell">
                 <div class="vento-container">
-                    <p><span>Direção</span><span>{{devolverDirecaoVento(current.wind_dir)}}</span></p>
-                    <p><span>Velocidade</span><span>{{MathHtml(current.wind_kph)}}km/h</span></p>
+                    <p><span>Direção</span><span>{{devolverDirecaoVento(current?.wind_dir)}}</span></p>
+                    <p><span>Velocidade</span><span>{{MathHtml(current?.wind_kph)}}km/h</span></p>
                 </div>
             </div>
         </div>
@@ -69,11 +69,11 @@
         <div class="tabela">
             <div class="table-cell astro-table-cell">
                 <img src="assets/icon/sunup.png" alt="" />
-                <p>{{devolverHorasFormatoEuropeu(astro.sunrise)}}</p>
+                <p>{{devolverHorasFormatoEuropeu(astro?.sunrise)}}</p>
             </div>
             <div class="table-cell astro-table-cell">
                 <img src="assets/icon/sundown.png" alt="" />
-                <p>{{devolverHorasFormatoEuropeu(astro.sunset)}}</p>
+                <p>{{devolverHorasFormatoEuropeu(astro?.sunset)}}</p>
             </div>
         </div>
     </div>

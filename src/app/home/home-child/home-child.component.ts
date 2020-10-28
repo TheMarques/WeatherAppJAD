@@ -1,4 +1,4 @@
-import {  AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api-service.service';
 import { Chart } from "chart.js";
@@ -15,46 +15,43 @@ import { WindDirections } from 'src/app/shared/enums/windDirections';
   templateUrl: './home-child.component.html',
   styleUrls: ['./home-child.component.scss'],
 })
-export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
+export class HomeChildComponent implements OnInit, OnDestroy {
 
   @ViewChild("doughnutCanvas") doughnutCanvas: ElementRef;
 
   sliderConfig = {
-    spaceBetween:10,
+    spaceBetween: 10,
     centeredSlides: false,
-    slidesPerView: 6 
+    slidesPerView: 6
   }
 
   @Input() local: string;
   public forecast: Forecast;
   public current: Current;
-  public day:Day;
+  public day: Day;
   public astro: Astro;
-  public location:Location;
+  public location: Location;
 
   private subArray: Subscription[] = [];
   doughnutChart: Chart;
-  
-  constructor(protected apiService: ApiService) {}
 
-  ngAfterViewInit(): void {
-    this.iniciarChart();
-  }
-  
+  constructor(protected apiService: ApiService) { }
+
   ngOnInit(): void {
     this.apiService.getForecast(this.local).subscribe(
       result => {
         console.log(result);
         this.forecast = result.forecast;
         this.location = result.location;
-        this.current = result.current;      
+        this.current = result.current;
         this.day = result.forecast.forecastday[0].day;
         this.astro = result.forecast.forecastday[0].astro;
+        this.iniciarChart();
       }
     );
   }
 
-  iniciarChart(){
+  iniciarChart() {
     let nivelHumidade = this.current.humidity;
     let util = 100 - nivelHumidade;
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
@@ -75,7 +72,7 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
     });
   }
 
-  showLink(){
+  showLink() {
     console.log(this.apiService.getApiUrl("current.json?q=".concat(this.local)));
   }
 
@@ -87,7 +84,7 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
     );
   }*/
 
-  getForecast():void{
+  getForecast(): void {
     this.apiService.getForecast(this.local).subscribe(
       result => {
         console.log(result);
@@ -107,37 +104,42 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
     this.subArray.forEach(sub => sub && !sub.closed && sub.unsubscribe);
   }
 
-  MathHtml(num: number){
+  MathHtml(num: number) {
+    if (num === null) return 0;
     return Math.floor(num);
   }
 
-  devolveDiaSemana(data:string):string{
+  devolveDiaSemana(data: string): string {
+    if (data === null) return "";
     let date = new Date(data);
     return Weekday[date.getDay()];
   }
-  devolveHoras(data:string):number{
+  devolveHoras(data: string): number {
+    if (data === null) return 0;
     let date = new Date(data);
     return date.getHours();
   }
 
-  devolverDirecaoVento(data:string):string{
+  devolverDirecaoVento(data: string): string {
+    if (data === null) return "";
     return WindDirections[data];
   }
 
-  devolverHorasFormatoEuropeu(data:string):string{
-      const [time, modifier] = data.split(' ');
-    
-      let [hours, minutes] = time.split(':');
-    
-      if (hours === '12') {
-        hours = '00';
-      }
-    
-      if (modifier === 'PM') {
-        hours = (parseInt(hours, 10) + 12)+'';
-      }
-    
-      return `${hours}h${minutes}`;
+  devolverHorasFormatoEuropeu(data: string): string {
+    if (data === null) return "";
+    const [time, modifier] = data.split(' ');
+
+    let [hours, minutes] = time.split(':');
+
+    if (hours === '12') {
+      hours = '00';
     }
 
+    if (modifier === 'PM') {
+      hours = (parseInt(hours, 10) + 12) + '';
+    }
+
+    return `${hours}h${minutes}`;
   }
+
+}

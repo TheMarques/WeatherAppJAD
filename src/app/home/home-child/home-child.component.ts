@@ -75,6 +75,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     }else{
       this.backgroundIMG = this.backgroundsDia();
     }
+    console.log(this.backgroundIMG);
   }
 
   backgroundsNoite(): string{
@@ -90,7 +91,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     }else if(text.includes('NUVENS')|| text.includes('NUVEM')){
       return `${this.imgUrl}nuvens-noite.gif`;
     }else{
-      return `${this.imgUrl}noite-limpa.jpg`;
+      return `${this.imgUrl}noite-limpo.jpg`;
     }
   }
 
@@ -107,7 +108,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     }else if(text.includes('NUVENS')|| text.includes('NUVEM')){
       return `${this.imgUrl}nuvens-dia.gif`;
     }else{
-      return `${this.imgUrl}dia-limpa.jpg`;
+      return `${this.imgUrl}dia-limpo.gif`;
     }
   }
 
@@ -116,11 +117,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
    *  Caso seja de noite devolve true
    */
   noite(): boolean{
-    let horasSunset: string = this.forecast.forecastday[0].astro.sunset;
-    let horaActual:number = (new Date()).getHours();
-    let horasEuropeSunset:string = this.devolverHorasFormatoEuropeu(horasSunset);
-    let horasSunsetNumber: number = parseInt(horasEuropeSunset.split('h')[0]);
-    return horasSunsetNumber < horaActual ?  true : false;  
+    return this.current.is_day == 0 ? true : false;  
   }
   
   /**
@@ -135,6 +132,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
         this.day = result.forecast.forecastday[0].day;
         this.astro = result.forecast.forecastday[0].astro;
         this.iniciarChart();
+        this.escolherBackground();
       }
     );
   }

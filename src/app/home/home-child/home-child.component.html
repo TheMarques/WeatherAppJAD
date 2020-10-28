@@ -1,5 +1,5 @@
 <header>
-  <h3>{{local}}</h3>
+  <h3>{{ local }}</h3>
   <p>texto</p>
   <h1>18º</h1>
 </header>
@@ -15,8 +15,10 @@
     <ion-slides [options]="sliderConfig">
       <ion-slide *ngFor="let item of this.arrayDumby2">
         <ul>
-          <li><span>{{item}}</span></li>
-          <li><img src="//cdn.weatherapi.com/weather/64x64/day/113.png"></li>
+          <li>
+            <span>{{ item }}</span>
+          </li>
+          <li><img src="//cdn.weatherapi.com/weather/64x64/day/113.png" /></li>
           <li><span>18º</span></li>
         </ul>
       </ion-slide>
@@ -25,12 +27,12 @@
 
   <div class="forecast-dias">
     <div class="forecast-dias-item" *ngFor="let item of this.arrayDumby">
-     <ul>
-       <li><span>Segunda-feira</span></li>
-       <li><img src="//cdn.weatherapi.com/weather/64x64/day/113.png"></li>
-       <li><span>20</span></li>
-       <li><span>12</span></li>
-     </ul>
+      <ul>
+        <li><span>Segunda-feira</span></li>
+        <li><img src="//cdn.weatherapi.com/weather/64x64/day/113.png" /></li>
+        <li><span>20</span></li>
+        <li><span>12</span></li>
+      </ul>
     </div>
   </div>
   <div class="nivel-conforto tres-ultimos-itens">
@@ -52,7 +54,7 @@
     <h1>Vento</h1>
     <div class="tabela">
       <div class="table-cell">
-        <img class="turbine" src="assets/icon/turbine.svg" alt="turbine">
+        <img class="turbine" src="assets/icon/turbine.svg" alt="turbine" />
       </div>
       <div class="table-cell">
         <div class="vento-container">
@@ -66,11 +68,11 @@
     <h1>Nascer e Pôr do Sol</h1>
     <div class="tabela">
       <div class="table-cell astro-table-cell">
-      <img src="assets/icon/sunup.png" alt="">
-      <p>7h35</p>
+        <img src="assets/icon/sunup.png" alt="" />
+        <p>7h35</p>
       </div>
       <div class="table-cell astro-table-cell">
-        <img src="assets/icon/sundown.png" alt="">
+        <img src="assets/icon/sundown.png" alt="" />
         <p>17h35</p>
       </div>
     </div>

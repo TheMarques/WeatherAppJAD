@@ -2,7 +2,7 @@ import { Astro } from './astro';
 import { Day } from "./day";
 import { Hour } from './hour';
 
-export interface ForecastDay {
+export interface Forecastday {
     date: string;
     date_epoch: number;
     day: Day;

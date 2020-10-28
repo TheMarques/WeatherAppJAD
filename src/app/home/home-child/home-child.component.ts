@@ -4,9 +4,10 @@ import { ApiService } from 'src/app/shared/services/api-service.service';
 import { Chart } from "chart.js";
 import { Current } from 'src/app/shared/models/current';
 import { Forecast } from 'src/app/shared/models/forecast';
-import { ForecastDay } from 'src/app/shared/models/forecastDay';
+import { Forecastday } from 'src/app/shared/models/forecastDay';
 import { Astro } from 'src/app/shared/models/astro';
 import { Day } from 'src/app/shared/models/day';
+import { Location } from 'src/app/shared/models/location';
 
 @Component({
   selector: 'app-home-child',
@@ -48,18 +49,8 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
         console.log(result);
         this.forecast = result.forecast;
         this.location = result.location;
-        this.current = result.current;
-        //this.astro = this.forecast.forecastDay[0].astro;
-
-        console.log(this.forecast);
-        console.log(this.location);
-        console.log(this.current);
-      
-        this.day = result.forecast.forecastDay[0].day;
-        console.log(this.day);  
-        //console.log(this.day);
-        //console.log(this.astro);
-
+        this.current = result.current;      
+        this.day = result.forecast.forecastday[0].day;
       }
     );
   }
@@ -113,6 +104,17 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
 
   ngOnDestroy(): void {
     this.subArray.forEach(sub => sub && !sub.closed && sub.unsubscribe);
+  }
+
+  MathHtml(num: number){
+    return Math.floor(num);
+  }
+
+  DevolveDiaSemanha(date:Date){
+
+  }
+  devolveHoras(date:Date){
+
   }
 
 }

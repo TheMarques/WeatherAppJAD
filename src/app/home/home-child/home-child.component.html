@@ -1,37 +1,37 @@
 <header>
-  <h3>{{ local }}</h3>
-  <p>texto</p>
-  <h1>18º</h1>
+  <h3>{{ this.location.name }}</h3>
+  <p>{{this.day.condition.text}}</p>
+  <h1>{{MathHtml(this.day.avgtemp_c)}}º</h1>
 </header>
 <main>
   <div class="hoje">
     <ul>
       <li>Hoje</li>
-      <li>19</li>
-      <li>12</li>
+      <li>{{MathHtml(this.day.maxtemp_c)}}</li>
+      <li>{{MathHtml(this.day.mintemp_c)}}</li>
     </ul>
   </div>
   <div class="forecast-horas">
     <ion-slides [options]="sliderConfig">
-      <ion-slide *ngFor="let item of this.arrayDumby2">
+      <ion-slide *ngFor="let hourDay of this.forecast.forecastday[0].hour">
         <ul>
           <li>
-            <span>{{ item }}</span>
+            <span>{{ hourDay.time }}</span>
           </li>
-          <li><img src="//cdn.weatherapi.com/weather/64x64/day/113.png" /></li>
-          <li><span>18º</span></li>
+          <li><img src="{{hourDay.condition.icon}}" /></li>
+          <li><span>{{MathHtml(hourDay.temp_c)}}º</span></li>
         </ul>
       </ion-slide>
     </ion-slides>
   </div>
 
   <div class="forecast-dias">
-    <div class="forecast-dias-item" *ngFor="let item of this.arrayDumby">
+    <div class="forecast-dias-item" *ngFor="let forescatdayitem of this.forecast.forecastday">
       <ul>
-        <li><span>Segunda-feira</span></li>
-        <li><img src="//cdn.weatherapi.com/weather/64x64/day/113.png" /></li>
-        <li><span>20</span></li>
-        <li><span>12</span></li>
+        <li><span>{{forescatdayitem.date}}</span></li>
+        <li><img src="{{forescatdayitem.day.condition.icon}}" /></li>
+        <li><span>{{MathHtml(forescatdayitem.day.maxtemp_c)}}</span></li>
+        <li><span>{{MathHtml(forescatdayitem.day.mintemp_c)}}</span></li>
       </ul>
     </div>
   </div>

@@ -1,7 +1,7 @@
-import { ForecastDay } from './forecastDay';
+import { Forecastday } from './forecastDay';
 
 export interface Forecast {
-    forecastDay: ForecastDay[],
+    forecastday: Forecastday[],
 }
 
 /***

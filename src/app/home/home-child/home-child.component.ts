@@ -75,7 +75,6 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     }else{
       this.backgroundIMG = this.backgroundsDia();
     }
-    console.log(this.backgroundIMG);
   }
 
   backgroundsNoite(): string{

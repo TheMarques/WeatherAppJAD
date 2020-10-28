@@ -143,6 +143,17 @@ header {
 .table-cell {
   width: 50%;
   display: table-cell;
+  h5{
+    padding-top: 1.5vh;
+    font-size: 0.8em;
+  }
+  canvas{
+    width: 50vw;
+  }
+  .turbine{
+    width: 80%;
+    margin: auto;
+  }
 }
 
 .table-cell:last-child {
@@ -157,7 +168,6 @@ header {
     
     p {
       display: table;
-      text-align: right;
       width: 100%;
       padding-top: 1.5vh;
       span:first-child {

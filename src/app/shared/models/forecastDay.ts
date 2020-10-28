@@ -1,12 +1,13 @@
-import { Condition } from "./condition";
+import { Astro } from './astro';
 import { Day } from "./day";
+import { Hour } from './hour';
 
 export interface ForecastDay {
-  date: string;
-  date_epoch: number;
-  day: Day;
-  condition: Condition;
-  uv: number;
+    date: string;
+    date_epoch: number;
+    day: Day;
+    astro: Astro;
+    hour: Hour[];
 }
 
 /**

@@ -31,7 +31,8 @@ export class HomeChildComponent implements OnInit, OnDestroy {
   public day: Day;
   public astro: Astro;
   public location: Location;
-
+  public backgroundIMG: string = '';
+  private imgUrl:string = 'assets/backgrounds/';
   private subArray: Subscription[] = [];
   doughnutChart: Chart;
 
@@ -40,12 +41,14 @@ export class HomeChildComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.apiService.getForecast(this.local).subscribe(
       result => {
+        console.log(result);
         this.forecast = result.forecast;
         this.location = result.location;
         this.current = result.current;
         this.day = result.forecast.forecastday[0].day;
         this.astro = result.forecast.forecastday[0].astro;
         this.iniciarChart();
+        this.escolherBackground();
       }
     );
   }
@@ -59,7 +62,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
         datasets: [
           {
             label: "# of Votes",
-            data: [util, nivelHumidade],
+            data: [nivelHumidade, util],
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)",
@@ -69,6 +72,60 @@ export class HomeChildComponent implements OnInit, OnDestroy {
         ]
       }
     });
+  }
+
+  escolherBackground(){
+    if(this.noite()){
+      this.backgroundIMG = this.backgroundsNoite();
+    }else{
+      this.backgroundIMG = this.backgroundsDia();
+    }
+  }
+
+  backgroundsNoite(): string{
+    let text: string = this.day.condition.text.toUpperCase();
+    if (text.includes('CHUVA') || text.includes('AGUACEIRO')) {
+      return `${this.imgUrl}chuva.gif`;
+    }else if(text.includes('TROVOADA')){
+      return `${this.imgUrl}trovoada-noite.gif`;
+    }else if(text.includes('NEVE')){
+      return `${this.imgUrl}neve-noite.gif`;
+    }else if(text.includes('NEVOEIRO')){
+      return `${this.imgUrl}nevoeiro-noite.jpg`;
+    }else if(text.includes('NUVENS')|| text.includes('NUVEM')){
+      return `${this.imgUrl}nuvens-noite.gif`;
+    }else{
+      return `${this.imgUrl}noite-limpa.jpg`;
+    }
+  }
+
+  backgroundsDia(): string{
+    let text: string = this.day.condition.text.toUpperCase();
+    if (text.includes('CHUVA') || text.includes('AGUACEIRO')) {
+      return `${this.imgUrl}chuva.gif`;
+    }else if(text.includes('TROVOADA')){
+      return `${this.imgUrl}trovoada-dia.gif`;
+    }else if(text.includes('NEVE')){
+      return `${this.imgUrl}neve-dia.gif`;
+    }else if(text.includes('NEVOEIRO')){
+      return `${this.imgUrl}nevoeiro-dia.jpg`;
+    }else if(text.includes('NUVENS')|| text.includes('NUVEM')){
+      return `${this.imgUrl}nuvens-dia.gif`;
+    }else{
+      return `${this.imgUrl}dia-limpa.jpg`;
+    }
+  }
+
+  /**
+   *  Verifica se já é de noite ou não atraves da horas fornecidas pela API
+   *  Caso seja de noite devolve true
+   */
+  noite(): boolean{
+    let horasSunset: string = this.forecast.forecastday[0].astro.sunset;
+    let horaActual:number = (new Date()).getHours();
+    let horasEuropeSunset:string = this.devolverHorasFormatoEuropeu(horasSunset);
+    let horasSunsetNumber: number = parseInt(horasEuropeSunset.split('h')[0]);
+    return horasSunsetNumber < horaActual ?  true : false;  
   }
   
   getForecast(): void {

@@ -1,6 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { ApiService } from '../shared/services/api-service.service';
 
 @Component({
   selector: 'app-home',

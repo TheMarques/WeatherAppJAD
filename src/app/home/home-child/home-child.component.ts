@@ -2,6 +2,11 @@ import {  AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewCh
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api-service.service';
 import { Chart } from "chart.js";
+import { Current } from 'src/app/shared/models/current';
+import { Forecast } from 'src/app/shared/models/forecast';
+import { ForecastDay } from 'src/app/shared/models/forecastDay';
+import { Astro } from 'src/app/shared/models/astro';
+import { Day } from 'src/app/shared/models/day';
 
 @Component({
   selector: 'app-home-child',
@@ -22,6 +27,11 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
   }
 
   @Input() local: string;
+  public forecast: Forecast;
+  public current: Current;
+  public day:Day;
+  public astro: Astro;
+  public location:Location;
 
   private subArray: Subscription[] = [];
   doughnutChart: Chart;
@@ -33,6 +43,25 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
   }
   
   ngOnInit(): void {
+    this.apiService.getForecast(this.local).subscribe(
+      result => {
+        console.log(result);
+        this.forecast = result.forecast;
+        this.location = result.location;
+        this.current = result.current;
+        //this.astro = this.forecast.forecastDay[0].astro;
+
+        console.log(this.forecast);
+        console.log(this.location);
+        console.log(this.current);
+      
+        this.day = result.forecast.forecastDay[0].day;
+        console.log(this.day);  
+        //console.log(this.day);
+        //console.log(this.astro);
+
+      }
+    );
   }
 
   iniciarChart(){
@@ -58,15 +87,15 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
     console.log(this.apiService.getApiUrl("current.json?q=".concat(this.local)));
   }
 
-  getCurrentDay():void{
+  /*getCurrentDay():void{
     this.apiService.getCurrent(this.local).subscribe(
       result => {
         console.log(result);
       }
     );
-  }
+  }*/
 
-  getForcast():void{
+  getForecast():void{
     this.apiService.getForecast(this.local).subscribe(
       result => {
         console.log(result);
@@ -74,13 +103,13 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
     );
   }
 
-  getAstronomy():void{
+  /*getAstronomy():void{
     this.apiService.getAstronomy(this.local).subscribe(
       result => {
         console.log(result);
       }
     );
-  }
+  }*/
 
   ngOnDestroy(): void {
     this.subArray.forEach(sub => sub && !sub.closed && sub.unsubscribe);

@@ -1,5 +1,10 @@
-export interface ApiResponse<T> {
-    type: string,
-    value: T,
+import { Current } from './current';
+import { Forecast } from './forecast';
+
+export interface ApiResponse {
+    location:Location,
+    current:Current,
+    forecast:Forecast,
+    alert:any
 }
 

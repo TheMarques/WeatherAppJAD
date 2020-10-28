@@ -1,16 +1,7 @@
-import { Condition } from './condition';
-import {Day} from './day'
 import { ForecastDay } from './forecastDay';
-import { Astro} from './astro'
-import { Hour } from './hour';
-
 
 export interface Forecast {
-    forecastDay: ForecastDay,
-    astro: Astro,
-    hour: Hour, 
-
-
+    forecastDay: ForecastDay[],
 }
 
 /***

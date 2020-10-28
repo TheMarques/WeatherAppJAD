@@ -15,7 +15,7 @@ export class ApiService {
   constructor(protected httpClient: HttpClient) { }
 
   private addApiKey(url: string): string {
-    return environment.api_url.concat(url, '&key=', environment.api_key);
+    return environment.api_url.concat(url, '&key=', environment.api_key, '&lang=pt');
   }
 
   getApiUrl(debug: string): string {

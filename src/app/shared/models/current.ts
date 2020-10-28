@@ -15,7 +15,7 @@ export interface Current {
     precip_in:number,
     humidity:number,
     cloud:number,
-    feelsike_c:number,
+    feelslike_c:number,
     vis_km:number,
     uv:number,
     guest_kph:number

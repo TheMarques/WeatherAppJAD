@@ -4,10 +4,11 @@ import { ApiService } from 'src/app/shared/services/api-service.service';
 import { Chart } from "chart.js";
 import { Current } from 'src/app/shared/models/current';
 import { Forecast } from 'src/app/shared/models/forecast';
-import { Forecastday } from 'src/app/shared/models/forecastDay';
 import { Astro } from 'src/app/shared/models/astro';
 import { Day } from 'src/app/shared/models/day';
 import { Location } from 'src/app/shared/models/location';
+import { Weekday } from 'src/app/shared/enums/weekdays';
+import { WindDirections } from 'src/app/shared/enums/windDirections';
 
 @Component({
   selector: 'app-home-child',
@@ -15,9 +16,6 @@ import { Location } from 'src/app/shared/models/location';
   styleUrls: ['./home-child.component.scss'],
 })
 export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
-
-  arrayDumby = [0,1,2,3,4,5];
-  arrayDumby2 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
 
   @ViewChild("doughnutCanvas") doughnutCanvas: ElementRef;
 
@@ -51,18 +49,21 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
         this.location = result.location;
         this.current = result.current;      
         this.day = result.forecast.forecastday[0].day;
+        this.astro = result.forecast.forecastday[0].astro;
       }
     );
   }
 
   iniciarChart(){
+    let nivelHumidade = this.current.humidity;
+    let util = 100 - nivelHumidade;
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: "doughnut",
       data: {
         datasets: [
           {
             label: "# of Votes",
-            data: [20, 80],
+            data: [util, nivelHumidade],
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)",
@@ -110,12 +111,33 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
     return Math.floor(num);
   }
 
-  DevolveDiaSemanha(date:Date){
+  devolveDiaSemana(data:string):string{
+    let date = new Date(data);
+    return Weekday[date.getDay()];
+  }
+  devolveHoras(data:string):number{
+    let date = new Date(data);
+    return date.getHours();
+  }
+
+  devolverDirecaoVento(data:string):string{
+    return WindDirections[data];
+  }
+
+  devolverHorasFormatoEuropeu(data:string):string{
+      const [time, modifier] = data.split(' ');
+    
+      let [hours, minutes] = time.split(':');
+    
+      if (hours === '12') {
+        hours = '00';
+      }
+    
+      if (modifier === 'PM') {
+        hours = (parseInt(hours, 10) + 12)+'';
+      }
+    
+      return `${hours}h${minutes}`;
+    }
 
   }
-  devolveHoras(date:string){
-    let date1 = new Date(date);
-    return date1.getHours();
-  }
-
-}

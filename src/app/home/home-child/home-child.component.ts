@@ -87,10 +87,10 @@ export class HomeChildComponent implements OnInit, OnDestroy {
       return `${this.imgUrl}neve-noite.gif`;
     }else if(text.includes('NEVOEIRO')){
       return `${this.imgUrl}nevoeiro-noite.jpg`;
-    }else if(text.includes('NUVENS')|| text.includes('NUVEM')){
+    }else if(text.includes('NUVENS')|| text.includes('NUVEM') || text.includes('NUBLADO')){
       return `${this.imgUrl}nuvens-noite.gif`;
     }else{
-      return `${this.imgUrl}noite-limpo.jpg`;
+      return `${this.imgUrl}noite-limpa.jpg`;
     }
   }
 
@@ -104,7 +104,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
       return `${this.imgUrl}neve-dia.gif`;
     }else if(text.includes('NEVOEIRO')){
       return `${this.imgUrl}nevoeiro-dia.jpg`;
-    }else if(text.includes('NUVENS')|| text.includes('NUVEM')){
+    }else if(text.includes('NUVENS')|| text.includes('NUVEM') || text.includes('NUBLADO')){
       return `${this.imgUrl}nuvens-dia.gif`;
     }else{
       return `${this.imgUrl}dia-limpo.gif`;

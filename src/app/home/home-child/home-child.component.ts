@@ -40,7 +40,6 @@ export class HomeChildComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.apiService.getForecast(this.local).subscribe(
       result => {
-        console.log(result);
         this.forecast = result.forecast;
         this.location = result.location;
         this.current = result.current;
@@ -71,19 +70,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
       }
     });
   }
-
-  showLink() {
-    console.log(this.apiService.getApiUrl("current.json?q=".concat(this.local)));
-  }
-
-  /*getCurrentDay():void{
-    this.apiService.getCurrent(this.local).subscribe(
-      result => {
-        console.log(result);
-      }
-    );
-  }*/
-
+  
   getForecast(): void {
     this.apiService.getForecast(this.local).subscribe(
       result => {
@@ -91,14 +78,6 @@ export class HomeChildComponent implements OnInit, OnDestroy {
       }
     );
   }
-
-  /*getAstronomy():void{
-    this.apiService.getAstronomy(this.local).subscribe(
-      result => {
-        console.log(result);
-      }
-    );
-  }*/
 
   ngOnDestroy(): void {
     this.subArray.forEach(sub => sub && !sub.closed && sub.unsubscribe);

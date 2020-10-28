@@ -16,7 +16,7 @@
       <ion-slide *ngFor="let hourDay of this.forecast.forecastday[0].hour">
         <ul>
           <li>
-            <span>{{ hourDay.time }}</span>
+            <span>{{ devolveHoras(hourDay.time) }}</span>
           </li>
           <li><img src="{{hourDay.condition.icon}}" /></li>
           <li><span>{{MathHtml(hourDay.temp_c)}}º</span></li>

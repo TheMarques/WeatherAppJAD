@@ -113,8 +113,9 @@ export class HomeChildComponent implements OnInit, OnDestroy, AfterViewInit{
   DevolveDiaSemanha(date:Date){
 
   }
-  devolveHoras(date:Date){
-
+  devolveHoras(date:string){
+    let date1 = new Date(date);
+    return date1.getHours();
   }
 
 }

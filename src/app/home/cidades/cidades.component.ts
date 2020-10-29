@@ -18,20 +18,32 @@ export class CidadesComponent implements OnInit {
   @Output() cidadesChange = new EventEmitter<string[]>();
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.verificaNumeroCidades();
   }
 
-
-  cidadesDisplauChange(){
+  /**
+   * Emite uma string vazia para o componente pai
+   * para substituir na variavel que controla uma das
+   * ngClasses
+   */
+  cidadesDisplauChange():void{
     this.cidadesDisplayChange.emit('')
   }
 
-  cidadesArrayEventF(){
+  /**
+   * Emite para o componente pai as cidades existentes 
+   * no array cidade no momento exato
+   */
+  cidadesArrayEventF():void{
     this.cidadesChange.emit(this.cidades);
   }
 
-  apagarCidade(cidade: string){
+  /**
+   * Retira da array cidades um cidade especifica
+   * @param cidade nome da cidade
+   */
+  apagarCidade(cidade: string):void{
     const index = this.cidades.indexOf(cidade);
     if (index > -1) {
       this.cidades.splice(index, 1);
@@ -40,7 +52,11 @@ export class CidadesComponent implements OnInit {
     this.verificaNumeroCidades();
   }
 
-  adicionarCidade(){
+  /**
+   * Adiciona uma cidade ao array 
+   * Chama também as outras funções necessárias
+   */
+  adicionarCidade():void{
     this.cidades.push(this.inputCidade);
     this.cidadesArrayEventF();
     this.toggleAdcCidade();
@@ -48,11 +64,18 @@ export class CidadesComponent implements OnInit {
     this.inputCidade = '';
   }
 
-  toggleAdcCidade(){
+  /**
+   * Controla display de um elemento DOM através de uma ngClass
+   */
+  toggleAdcCidade():void{
     this.adcCidadeDisplay = this.adcCidadeDisplay.length == 0 ? 'ativo' :  '';
   }
 
-  verificaNumeroCidades(){
+  /**
+   * Caso haja só uma cidade tira o display de o icon 
+   * que tem acesso ao função que apaga a cidade em questão
+   */
+  verificaNumeroCidades():void{
     this.disableTrash = this.cidades.length == 1 ? 'desativo' : '';
   }
 

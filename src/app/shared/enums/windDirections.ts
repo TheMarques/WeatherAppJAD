@@ -1,18 +1,29 @@
 export enum WindDirections{
+    //Pontos Cardeais
     'N' = "Norte",
-    'NNE' ="Norte-Nordeste" ,
-    'NE' ="Nordeste",
-    'ENE' ="Leste-Nordeste",
+    'S'="Sul",
     'E'="Este",
-    'ESE'="Leste-Sudeste",
-    'SE'="Sudeste" ,
-    'SSE'="Sul-Sudeste" ,
-    'S'="Sul" ,
-    'SSW'="Sul-Sudoeste" ,
-    'SW'="Sudoeste",
-    'WSW'="Oeste-Sudoeste"  ,
     'W'="Oeste",
+    //Ponto Colaterais
+    'NE' ="Nordeste",
+    'SE'="Sudeste" ,
+    'SW'="Sudoeste",
+    'NW'="Noroeste",
+    //Pontos Sub-Colaterais
+    'NNE' ="Norte-Nordeste" ,
+    'ENE' ="Este-Nordeste",
+    'ESE'="Este-Sudeste",
+    'SSE'="Sul-Sudeste" ,
+    'SSW'="Sul-Sudoeste" ,
+    'WSW'="Oeste-Sudoeste" ,
     'WNW'="Oeste-Noroeste",
-    'NW'="Nordoeste",
     'NNW'="Norte-Noroeste"
+    
+    
+    
+    
+    
+    
+    
+    
 }

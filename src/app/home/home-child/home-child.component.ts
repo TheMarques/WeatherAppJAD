@@ -77,6 +77,9 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Devolver um dos backgrounds noturnos consoante o que está escrito na API
+   */
   backgroundsNoite(): string{
     let text: string = this.day.condition.text.toUpperCase();
     if (text.includes('CHUVA') || text.includes('AGUACEIRO')) {
@@ -94,6 +97,9 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     }
   }
 
+ /**
+   * Devolver um dos backgrounds diurnos consoante o que está escrito na API
+   */
   backgroundsDia(): string{
     let text: string = this.day.condition.text.toUpperCase();
     if (text.includes('CHUVA') || text.includes('AGUACEIRO')) {

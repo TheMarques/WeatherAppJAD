@@ -33,15 +33,15 @@ export class HomePage implements OnInit {
   }
 
   /**
-   * 
+   * Controla o display de um Component
    */
-  toggleCidadesComponent() {
+  toggleCidadesComponent():void {
     this.cidadesComponent = this.cidadesComponent.length == 0 ? 'ativo' : '';
   }
 
   /**
-   * 
-   * @param vazio 
+   * Controla o display de um Component
+   * @param vazio nome da class 
    */
   toggleCidadesComponentEvent(vazio: string):void  {
     this.cidadesComponent = vazio;

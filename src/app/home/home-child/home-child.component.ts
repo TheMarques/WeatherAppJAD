@@ -48,7 +48,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
   /**
    * Inicializa o gráfico de humidade
    */
-  iniciarChart() {
+  iniciarChart():void{
     let nivelHumidade = this.current.humidity;
     let util = 100 - nivelHumidade;
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
@@ -69,7 +69,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     });
   }
 
-  escolherBackground(){
+  escolherBackground():void{
     if(this.noite()){
       this.backgroundIMG = this.backgroundsNoite();
     }else{
@@ -147,7 +147,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
    * Retorna o valor de entrada aredondado para baixo
    * @param num 
    */
-  MathHtml(num: number) {
+  MathHtml(num: number):number {
     if (num === null) return 0;
     return Math.floor(num);
   }

@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
    *  Se sim atribuir a variavel cidades
    *  Se não atribui Lisboa como defeito
    */
-  ngOnInit() {
+  ngOnInit():void {
     if (localStorage.getItem("cidades")) {
       this.cidades = JSON.parse(localStorage.getItem("cidades"));
     }
@@ -35,7 +35,7 @@ export class HomePage implements OnInit {
   /**
    * 
    */
-  toggleCidadesComponent() {
+  toggleCidadesComponent():void  {
     this.cidadesComponent.length == 0 ? this.cidadesComponent = 'ativo' : this.cidadesComponent = '';
   }
 
@@ -43,7 +43,7 @@ export class HomePage implements OnInit {
    * 
    * @param vazio 
    */
-  toggleCidadesComponentEvent(vazio: string) {
+  toggleCidadesComponentEvent(vazio: string):void  {
     this.cidadesComponent = vazio;
   }
 
@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
    * Atualiza o campo cidades com informação que vem do parâmetro de entrada
    * @param cidades 
    */
-  updateCidade(cidades: string[]) {
+  updateCidade(cidades: string[]):void  {
     this.cidades = cidades;
     //Guarda cidades em localstorage
     localStorage.setItem("cidades", JSON.stringify(this.cidades));

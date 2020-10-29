@@ -69,6 +69,10 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Atribui o background de dia ou de noite
+   * com base na função noite
+   */
   escolherBackground():void{
     if(this.noite()){
       this.backgroundIMG = this.backgroundsNoite();
@@ -97,7 +101,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
     }
   }
 
- /**
+  /**
    * Devolver um dos backgrounds diurnos consoante o que está escrito na API
    */
   backgroundsDia(): string{

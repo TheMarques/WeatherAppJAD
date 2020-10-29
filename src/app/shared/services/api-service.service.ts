@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ApiResponse } from '../models/api-response';
 import { environment } from 'src/environments/environment.prod';
+import { ApiIpResponse } from '../models/api-ip-response';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ApiService {
    * @param url 
    */
   private addApiKey(url: string): string {
-    return environment.api_url.concat(url, '&key=', environment.api_key, '&lang=pt');
+    return environment.api_weather_url.concat(url, '&key=', environment.api_weather_key, '&lang=pt');
   }
 
   /**
@@ -29,6 +30,13 @@ export class ApiService {
   getForecast(location: string): Observable<ApiResponse> {
     let url: string = this.addApiKey("forecast.json?q=".concat(location,"&days=7"));
     return this.httpClient.get<ApiResponse>(url);
+  }
+
+  /**
+   * Retorna uma Resposta da Api com o IP publico do utilizador
+   */
+  getIPAddress():Observable<ApiIpResponse> {  
+    return this.httpClient.get<ApiIpResponse>(environment.api_ip_url);  
   }
   
 }

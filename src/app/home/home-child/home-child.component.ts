@@ -32,7 +32,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
   public astro: Astro;
   public location: Location;
   public backgroundIMG: string = '';
-  private imgUrl:string = 'assets/backgrounds/';
+  private readonly imgUrl:string = 'assets/backgrounds/';
   private subArray: Subscription[] = [];
   doughnutChart: Chart;
 
@@ -116,14 +116,14 @@ export class HomeChildComponent implements OnInit, OnDestroy {
    *  Caso seja de noite devolve true
    */
   noite(): boolean{
-    return this.current.is_day == 0 ? true : false;  
+    return this.current.is_day == 0;  
   }
   
   /**
    * Faz a chamada a API e atribui o valor a todos os campos
    */
   getForecast(): void {
-    this.apiService.getForecast(this.local).subscribe(
+    let api:Subscription = this.apiService.getForecast(this.local).subscribe(
       result => {
         this.forecast = result.forecast;
         this.location = result.location;
@@ -134,6 +134,7 @@ export class HomeChildComponent implements OnInit, OnDestroy {
         this.escolherBackground();
       }
     );
+    this.subArray.push(api);
   }
 
   /**

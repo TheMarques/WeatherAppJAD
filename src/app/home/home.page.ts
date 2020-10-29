@@ -35,8 +35,8 @@ export class HomePage implements OnInit {
   /**
    * 
    */
-  toggleCidadesComponent():void  {
-    this.cidadesComponent.length == 0 ? this.cidadesComponent = 'ativo' : this.cidadesComponent = '';
+  toggleCidadesComponent() {
+    this.cidadesComponent = this.cidadesComponent.length == 0 ? 'ativo' : '';
   }
 
   /**

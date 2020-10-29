@@ -49,11 +49,11 @@ export class CidadesComponent implements OnInit {
   }
 
   toggleAdcCidade(){
-    this.adcCidadeDisplay.length == 0 ? this.adcCidadeDisplay = 'ativo' : this.adcCidadeDisplay = '';
+    this.adcCidadeDisplay = this.adcCidadeDisplay.length == 0 ? 'ativo' :  '';
   }
 
   verificaNumeroCidades(){
-    this.cidades.length == 1 ? this.disableTrash = 'desativo' : this.disableTrash = '';
+    this.disableTrash = this.cidades.length == 1 ? 'desativo' : '';
   }
 
 }

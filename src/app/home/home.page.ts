@@ -22,8 +22,8 @@ export class HomePage implements OnInit {
 
   /**
    *  Verificar localstorage por cidades
-   *  Se sim atribuir a variavel cidades
-   *  Se não atribui cidade através do ip público
+   *  Se sim, atribui a variável cidades
+   *  Se não, atribui cidade através do ip público
    */
   ngOnInit(): void {
     if (localStorage.getItem("cidades")) {

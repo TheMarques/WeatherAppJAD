@@ -24,7 +24,7 @@ export class CidadesComponent implements OnInit {
 
   /**
    * Emite uma string vazia para o componente pai
-   * para substituir na variavel que controla uma das
+   * para substituir na variável que controla uma das
    * ngClasses
    */
   cidadesDisplauChange():void{
@@ -40,7 +40,7 @@ export class CidadesComponent implements OnInit {
   }
 
   /**
-   * Retira da array cidades um cidade especifica
+   * Retira do array cidades uma cidade especifica
    * @param cidade nome da cidade
    */
   apagarCidade(cidade: string):void{
@@ -65,15 +65,15 @@ export class CidadesComponent implements OnInit {
   }
 
   /**
-   * Controla display de um elemento DOM através de uma ngClass
+   * Controla o display de um elemento DOM através de uma ngClass
    */
   toggleAdcCidade():void{
     this.adcCidadeDisplay = this.adcCidadeDisplay.length == 0 ? 'ativo' :  '';
   }
 
   /**
-   * Caso haja só uma cidade tira o display de o icon 
-   * que tem acesso ao função que apaga a cidade em questão
+   * Caso haja só uma cidade tira o display do icon ,
+   * que tem acesso à função que apaga a cidade em questão
    */
   verificaNumeroCidades():void{
     this.disableTrash = this.cidades.length == 1 ? 'desativo' : '';

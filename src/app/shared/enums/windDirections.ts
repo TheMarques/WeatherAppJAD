@@ -1,6 +1,6 @@
 export enum WindDirections{
     //Pontos Cardeais
-    'N' = "Norte",
+    'N'= "Norte",
     'S'="Sul",
     'E'="Este",
     'W'="Oeste",
